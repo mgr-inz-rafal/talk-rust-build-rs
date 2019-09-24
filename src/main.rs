@@ -32,8 +32,8 @@ fn main() {
     loop {
         tab.iter().for_each(|v| {
             let _ = cursor.goto(*v, 10);
-            print!(" * ");
-            thread::sleep(time::Duration::from_millis(10));
+            print!(" █ ");
+            thread::sleep(time::Duration::from_millis(5));
         })
     }
 }
