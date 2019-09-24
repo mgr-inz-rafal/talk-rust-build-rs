@@ -1,6 +1,6 @@
-#[allow(unused_must_use)]
 use crossterm_cursor::cursor;
 use crossterm_terminal::terminal;
+use std::f64;
 use std::{thread, time};
 
 fn main() {
@@ -10,6 +10,7 @@ fn main() {
     let _ = terminal.clear(crossterm_terminal::ClearType::All);
     println!("Terminal width: {}", terminal.terminal_size().0);
 
+    /*
     let tab = vec![
         50, 51, 52, 53, 53, 54, 55, 56, 57, 58, 59, 60, 60, 61, 62, 63, 64, 65, 65, 66, 67, 68, 69,
         70, 70, 71, 72, 73, 73, 74, 75, 76, 76, 77, 78, 79, 79, 80, 81, 81, 82, 83, 83, 84, 85, 85,
@@ -28,6 +29,12 @@ fn main() {
         28, 29, 30, 30, 31, 32, 33, 34, 35, 35, 36, 37, 38, 39, 40, 40, 41, 42, 43, 44, 45, 46, 47,
         47, 48, 49,
     ];
+    */
+
+    let mut tab = Vec::new();
+    for i in 0..359 {
+        tab.push(((f64::from(i).to_radians().sin() + 1.0) * 50.0).round() as u16);
+    }
 
     loop {
         tab.iter().for_each(|v| {
