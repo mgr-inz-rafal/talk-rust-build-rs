@@ -16,14 +16,13 @@ fn main() -> Result<(), std::io::Error> {
     let out_dir = env::var("OUT_DIR").unwrap();
     let path = Path::new(&out_dir).join("beret.rs");
     let mut file = File::create(&path)?;
-    file.write_all("fn dupa() -> Vec<u16> {".as_bytes())?;
-    file.write_all("let tab = vec![".as_bytes())?;
+    file.write_all("const TAB: [u16; 359] = [".as_bytes())?;
 
     tab.iter().for_each(|v| {
         let _ = file.write_all((*v).to_string().as_bytes());
         let _ = file.write_all(",".as_bytes());
     });
 
-    file.write_all("];}".as_bytes())?;
+    file.write_all("];".as_bytes())?;
     Ok(())
 }
