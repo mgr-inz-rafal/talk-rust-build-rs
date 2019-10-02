@@ -3,6 +3,8 @@ use std::fs::File;
 use std::io::prelude::*;
 use std::path::Path;
 
+extern crate cc;
+
 fn precalc() -> Vec<u16> {
     let mut tab = Vec::new();
     for i in 0..359 {
@@ -12,6 +14,10 @@ fn precalc() -> Vec<u16> {
 }
 
 fn main() -> Result<(), std::io::Error> {
+    cc::Build::new()
+        .file("src/hello.c")
+        .compile("hello");
+        
     let tab = precalc();
     let out_dir = env::var("OUT_DIR").unwrap();
     let path = Path::new(&out_dir).join("beret.rs");

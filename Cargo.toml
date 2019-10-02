@@ -9,3 +9,6 @@ edition = "2018"
 [dependencies]
 crossterm_cursor = "0.2.6"
 crossterm_terminal = "0.2.6"
+
+[build-dependencies]
+cc = "1.0"
